@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import owlLogo from '../public/owlLogo.png';
+import styles from '../styles/Dark.module.css';
+import owlLogoDark from '../public/owlLogoDark.png';
 import { Helmet } from "react-helmet";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Home() {
+export default function Dark() {
   const [book, setBook] = useState("");
   const [result, setResult] = useState([]);
   const apiKey = "";
@@ -26,7 +26,6 @@ export default function Home() {
         });
     }
   }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -35,11 +34,11 @@ export default function Home() {
         <link rel="icon" href="/owlFavicon.ico" />
       </Head>
       <Helmet>
-        <body style="background-color: #097BFF" />
+        <body style="background-color: #191919" />
       </Helmet>
       <header>
-        <Link href="/dark"><Image
-          src={owlLogo}
+      <Link href="/"><Image
+          src={owlLogoDark}
           alt="Picture of the author"
           width="100px"
           height="80px"
@@ -47,7 +46,7 @@ export default function Home() {
         /></Link>
       </header>
       <main>
-        <div className={styles.bookContainer}>{result.map((book) => (
+      <div className={styles.bookContainer}>{result.map((book) => (
           <a target="_blank" href={book.volumeInfo.previewLink} rel="noreferrer">
             <img src={
               book.volumeInfo.imageLinks === undefined
@@ -59,7 +58,7 @@ export default function Home() {
         <div className={styles.searchBox}>
           <label>Search for a book</label>
           <div>
-            <input type="search" placeholder="George Martin..." required onChange={e => setBook(e.target.value)} />
+          <input type="search" placeholder="George Martin..." required onChange={e => setBook(e.target.value)} />
             <button onClick={inputSubmit}>Go</button>
           </div>
         </div>
@@ -93,4 +92,3 @@ export default function Home() {
     </div>
   )
 }
-
